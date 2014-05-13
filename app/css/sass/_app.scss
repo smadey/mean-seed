@@ -1,0 +1,147 @@
+.swipe-page {
+    background: #fff url('../img/bg.jpg') 50% 50% no-repeat;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'microsoft yahei';
+    position: relative;
+
+    & > .hd {
+        position: relative;
+    }
+
+    & > .bd {
+        overflow-x: hidden;
+    }
+
+    & > .ft {
+        bottom: 0;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.arrow {
+    background-color: #fff;
+    border-radius: 50%;
+    color: #000;
+    display: inline-block;
+    font-size: 18px;
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    width: 25px;
+
+    &:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+.wrapper {
+    height: 100%;
+
+    & > .hd {
+        height: 60%;
+    }
+
+    & > .bd {
+        height: 40%;
+    }
+}
+
+.party-title,
+.party-time {
+    color: #fff;
+    text-align: center;
+}
+
+.party-title {
+    font-size: 30px;
+    font-weight: normal;
+    margin-top: 0;
+}
+.party-time {
+    font-size: 15px;
+}
+
+
+.party-intro {
+    background-color: #ccc;
+    font-size: 14px;
+    padding: 20px;
+}
+.party-intro-title {
+    border-bottom: 1px solid #333;
+    font-size: 1.4em;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.party-intro-content {
+}
+
+
+.party-info {
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media screen and (min-width: 320px){
+    .party-info {
+        width: 300px;
+    }
+}
+@media screen and (max-width: 320px){
+    .party-info {
+        width: 250px;
+    }
+}
+.party-info-row {
+    border-bottom: 1px solid #fff;
+    line-height: 25px;
+    overflow: auto;
+}
+.party-info-row-first {
+    border-top: 1px solid #fff;
+}
+.party-info-cell {
+    float: left;
+    min-width: 20%;
+}
+.party-info-cell-1 {
+    text-align: center;
+}
+.party-info-cell-2 {
+    border-left: 1px solid #fff;
+    padding-left: 1em;
+}
+
+
+.signup {
+    background-color: #666;
+    display: inline-block;
+    height: 10px;
+    left: 50%;
+    margin-left: -50px;
+    position: relative;
+    width: 100px;
+}
+
+#popupSignup {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.ui-input-text {
+    border-color: #666;
+    border-radius: 5px;
+}
+.ui-input-btn {
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 5px;
+}

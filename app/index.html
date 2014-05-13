@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Invitation</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.bundle.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+
+    <script src="js/ionic.swipepages.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/services.js"></script>
+</head>
+
+<body ng-app="App">
+    <ion-pane ng-controller="InvitationCtrl">
+        <swipe-pages swipe-direction="vertical">
+
+            <swipe-page>
+                <div class="bd wrapper">
+                    <div class="hd"></div>
+                    <div class="bd">
+                        <h2 class="party-title">中路资本五月酒会</h2>
+                        <p class="party-time">2014年5月19日下午6点</p>
+                    </div>
+                </div>
+                <div class="ft">
+                    <a href="" class="arrow"><i class="fa fa-angle-up"></i></a>
+                </div>
+            </swipe-page>
+
+            <swipe-page ng-repeat="intro in intros">
+                <div class="bd wrapper">
+                    <div class="hd"></div>
+                    <div class="bd party-intro">
+                        <h4 class="party-intro-title" ng-bind="intro.title"></h4>
+                        <p class="party-intro-content" ng-bind="intro.content"></p>
+                    </div>
+                </div>
+                <div class="ft">
+                    <a href="" class="arrow"><i class="fa fa-angle-up"></i></a>
+                </div>
+            </swipe-page>
+
+            <swipe-page>
+                <div class="bd wrapper">
+                    <div class="hd"></div>
+                    <div class="bd party-info">
+                        <div class="party-info-row party-info-row-first">
+                            <div class="party-info-cell party-info-cell-1"><i class="fa fa-phone"></i></div>
+                            <div class="party-info-cell party-info-cell-2">021-50591378-8078</div>
+                        </div>
+                        <div class="party-info-row">
+                            <div class="party-info-cell party-info-cell-1"><i class="fa fa-envelope"></i></div>
+                            <div class="party-info-cell party-info-cell-2">hsli@zhonglu.com.cn</div>
+                        </div>
+                        <div class="party-info-row">
+                            <div class="party-info-cell party-info-cell-1"><i class="fa fa-map-marker"></i></div>
+                            <div class="party-info-cell party-info-cell-2">上海市徐汇区东安路8号</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ft">
+                    <!-- <a href="#popupSignup" class="signup"></a> -->
+                </div>
+            </swipe-page>
+
+        </swipe-pages>
+    </ion-pane>
+</body>
+
+</html>
