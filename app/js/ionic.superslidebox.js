@@ -391,7 +391,7 @@
                     var isValidSlide =
                         Number(duration) < 250 // if slide duration is less than 250ms
                     && Math.abs(delta[posName]) > 20 // and if slide amt is greater than 20px
-                    || Math.abs(delta[posName]) > wh / 2; // or if slide amt is greater than half the width or height
+                    || Math.abs(delta[posName]) > Math.min(wh / 2, 160); // or if slide amt is greater than half the width or height
 
                     // determine if slide attempt is past start and end
                     var isPastBounds = !index && delta[posName] > 0 // if first slide and slide amt is greater than 0

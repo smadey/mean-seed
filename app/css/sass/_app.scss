@@ -1,29 +1,57 @@
-.slider {
-    height: 100%;
-    width: 100%;
-}
-.slider-slide {
-    background: #fff url('../img/bg.jpg') 50% 50% no-repeat;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    font-family: 'microsoft yahei';
 
-    & > .hd {
-        height: 60%;
-    }
-
-    & > .bd {
-        height: 40%;
-    }
-
-    & > .ft {
-        bottom: 0;
-        position: absolute;
-        text-align: center;
+.pane {
+    & > .slider {
+        height: 100%;
         width: 100%;
+        & > .slider-slides > .slider-slide {
+            background: #fff url('../img/bg.jpg') 50% 50% no-repeat;
+            @include background-size(cover);
+            font-family: 'microsoft yahei';
+
+            & > .hd {
+                height: 60%;
+                overflow: auto;
+            }
+
+            & > .bd {
+                height: 40%;
+            }
+
+            & > .ft {
+                bottom: 0;
+                position: absolute;
+                text-align: center;
+                width: 100%;
+            }
+        }
     }
+}
+
+
+.logo {
+    background: url('../img/logo.gif') 50% 50% no-repeat;
+    @include background-size(cover);
+    height: 200px;
+    margin: 20% auto 0;
+    position: relative;
+    width: 200px;
+
+    &:after {
+        background-color: rgba(0, 0, 0, .15);
+        border: 1px solid #fff;
+        border-radius: 50%;
+        content: '';
+        height: 160px;
+        left: 50%;
+        margin-left: -80px;
+        position: absolute;
+        width: 160px;
+        z-index: -1;
+    }
+}
+
+.logo-expect {
+    background-image: url('../img/expect.gif');
 }
 
 .arrow {
@@ -60,13 +88,40 @@
 }
 
 
+
+.party-pic {
+    .slider {
+        height: 100%;
+        width: 100%;
+
+        .slider-slide {
+            img {
+                bottom: 0;
+                height: 95%;
+                left: 50%;
+                margin-left: -45%;
+                position: absolute;
+                width: 90%;
+            }
+        }
+        .slider-pager-page {
+            color: #fff;
+        }
+
+        h2 {
+            font-family: 'microsoft yahei';
+            font-weight: bold;
+        }
+    }
+}
+
 .party-intro {
-    background-color: #ccc;
+    background-color: #e7e7e7;
     font-size: 14px;
     padding: 20px;
 }
 .party-intro-title {
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #808080;
     font-size: 1.4em;
     padding-bottom: 10px;
     margin-bottom: 10px;
