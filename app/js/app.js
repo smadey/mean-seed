@@ -4,7 +4,7 @@
 
 var app = angular.module('App', [
     'ionic',
-    'ionic.swipe.pages',
+    'ionic.ui.superSlideBox',
     'appDirectives',
     'appControllers',
     'appFilters',

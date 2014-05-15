@@ -4,7 +4,7 @@
 
 var appControllers = angular.module('appControllers', []);
 
-appControllers.controller('InvitationCtrl', ['$scope', 'Invitation',
+appControllers.controller('MainCtrl', ['$scope', 'Invitation',
     function($scope, Invitation) {
         $scope.intros = [
             { title: '酒会简介', content: '专注移动29年', imgUrl: '' },

@@ -1,18 +1,21 @@
-.swipe-page {
+.slider {
+    height: 100%;
+    width: 100%;
+}
+.slider-slide {
     background: #fff url('../img/bg.jpg') 50% 50% no-repeat;
     -moz-background-size: cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     font-family: 'microsoft yahei';
-    position: relative;
 
     & > .hd {
-        position: relative;
+        height: 60%;
     }
 
     & > .bd {
-        overflow-x: hidden;
+        height: 40%;
     }
 
     & > .ft {
@@ -38,18 +41,6 @@
     &:hover {
         color: inherit;
         text-decoration: none;
-    }
-}
-
-.wrapper {
-    height: 100%;
-
-    & > .hd {
-        height: 60%;
-    }
-
-    & > .bd {
-        height: 40%;
     }
 }
 

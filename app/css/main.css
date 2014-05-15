@@ -9905,32 +9905,37 @@ a.button {
 }
 
 /* line 1, sass/_app.scss */
-.swipe-page {
+.slider {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 5, sass/_app.scss */
+.slider-slide {
   background: white url("../img/bg.jpg") 50% 50% no-repeat;
   -moz-background-size: cover;
   -webkit-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   font-family: 'microsoft yahei';
-  position: relative;
 }
-/* line 10, sass/_app.scss */
-.swipe-page > .hd {
-  position: relative;
+/* line 13, sass/_app.scss */
+.slider-slide > .hd {
+  height: 60%;
 }
-/* line 14, sass/_app.scss */
-.swipe-page > .bd {
-  overflow-x: hidden;
+/* line 17, sass/_app.scss */
+.slider-slide > .bd {
+  height: 40%;
 }
-/* line 18, sass/_app.scss */
-.swipe-page > .ft {
+/* line 21, sass/_app.scss */
+.slider-slide > .ft {
   bottom: 0;
   position: absolute;
   text-align: center;
   width: 100%;
 }
 
-/* line 26, sass/_app.scss */
+/* line 29, sass/_app.scss */
 .arrow {
   background-color: #fff;
   border-radius: 50%;
@@ -9943,52 +9948,39 @@ a.button {
   text-decoration: none;
   width: 25px;
 }
-/* line 38, sass/_app.scss */
+/* line 41, sass/_app.scss */
 .arrow:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 44, sass/_app.scss */
-.wrapper {
-  height: 100%;
-}
 /* line 47, sass/_app.scss */
-.wrapper > .hd {
-  height: 60%;
-}
-/* line 51, sass/_app.scss */
-.wrapper > .bd {
-  height: 40%;
-}
-
-/* line 56, sass/_app.scss */
 .party-title,
 .party-time {
   color: #fff;
   text-align: center;
 }
 
-/* line 62, sass/_app.scss */
+/* line 53, sass/_app.scss */
 .party-title {
   font-size: 30px;
   font-weight: normal;
   margin-top: 0;
 }
 
-/* line 67, sass/_app.scss */
+/* line 58, sass/_app.scss */
 .party-time {
   font-size: 15px;
 }
 
-/* line 72, sass/_app.scss */
+/* line 63, sass/_app.scss */
 .party-intro {
   background-color: #ccc;
   font-size: 14px;
   padding: 20px;
 }
 
-/* line 77, sass/_app.scss */
+/* line 68, sass/_app.scss */
 .party-intro-title {
   border-bottom: 1px solid #333;
   font-size: 1.4em;
@@ -9996,7 +9988,7 @@ a.button {
   margin-bottom: 10px;
 }
 
-/* line 87, sass/_app.scss */
+/* line 78, sass/_app.scss */
 .party-info {
   color: #fff;
   margin-left: auto;
@@ -10004,48 +9996,48 @@ a.button {
 }
 
 @media screen and (min-width: 320px) {
-  /* line 93, sass/_app.scss */
+  /* line 84, sass/_app.scss */
   .party-info {
     width: 300px;
   }
 }
 @media screen and (max-width: 320px) {
-  /* line 98, sass/_app.scss */
+  /* line 89, sass/_app.scss */
   .party-info {
     width: 250px;
   }
 }
-/* line 102, sass/_app.scss */
+/* line 93, sass/_app.scss */
 .party-info-row {
   border-bottom: 1px solid #fff;
   line-height: 25px;
   overflow: auto;
 }
 
-/* line 107, sass/_app.scss */
+/* line 98, sass/_app.scss */
 .party-info-row-first {
   border-top: 1px solid #fff;
 }
 
-/* line 110, sass/_app.scss */
+/* line 101, sass/_app.scss */
 .party-info-cell {
   float: left;
   min-width: 20%;
 }
 
-/* line 114, sass/_app.scss */
+/* line 105, sass/_app.scss */
 .party-info-cell-1 {
   font-size: 18px;
   text-align: center;
 }
 
-/* line 118, sass/_app.scss */
+/* line 109, sass/_app.scss */
 .party-info-cell-2 {
   border-left: 1px solid #fff;
   padding-left: 1em;
 }
 
-/* line 124, sass/_app.scss */
+/* line 115, sass/_app.scss */
 .signup {
   background-color: #666;
   display: inline-block;
@@ -10056,20 +10048,20 @@ a.button {
   width: 100px;
 }
 
-/* line 134, sass/_app.scss */
+/* line 125, sass/_app.scss */
 #popupSignup {
   background-color: #fff;
   border-radius: 10px;
   padding: 20px;
 }
 
-/* line 140, sass/_app.scss */
+/* line 131, sass/_app.scss */
 .ui-input-text {
   border-color: #666;
   border-radius: 5px;
 }
 
-/* line 144, sass/_app.scss */
+/* line 135, sass/_app.scss */
 .ui-input-btn {
   border: 1px solid #333;
   border-radius: 5px;
