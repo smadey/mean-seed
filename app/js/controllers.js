@@ -6,10 +6,6 @@ var appControllers = angular.module('appControllers', []);
 
 appControllers.controller('MainCtrl', ['$scope', 'Invitation',
     function($scope, Invitation) {
-        $scope.intros = [
-            { title: '酒会简介', content: '专注移动29年', imgUrl: '' },
-            { title: '酒会简介', content: '专注移动30年', imgUrl: '' },
-            { title: '酒会简介', content: '专注移动31年', imgUrl: '' },
-        ];
+        $scope.intro = { title: '酒会简介', content: '专注移动29年', imgs: ['', '', ''] };
     }
 ]);
