@@ -10,7 +10,7 @@
 
             & > .hd {
                 height: 60%;
-                overflow: auto;
+                overflow: hidden;
             }
 
             & > .bd {
@@ -32,8 +32,10 @@
     background: url('../img/logo.gif') 50% 50% no-repeat;
     @include background-size(cover);
     height: 200px;
-    margin: 20% auto 0;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
+    top: 20%;
     width: 200px;
 
     &:after {
