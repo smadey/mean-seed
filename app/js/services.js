@@ -1,14 +1,18 @@
-'use strict';
+define(['angular', 'angularResource'], function (angular) {
+    'use strict';
 
-/* Services */
+    /* Services */
 
-var appServices = angular.module('appServices', ['ngResource']);
+    var appServices = angular.module('appServices', ['ngResource']);
 
-appServices.factory('Invitation', ['$resource',
-    function($resource) {
-        var Invitation = $resource('/services/invitation/:id', {}, {
-            update: { method: 'PUT'}
-        });
-        return Invitation;
-    }
-]);
+    appServices.factory('Invitation', ['$resource',
+        function($resource) {
+            var Invitation = $resource('/services/invitation/:id', {}, {
+                update: { method: 'PUT'}
+            });
+            return Invitation;
+        }
+    ]);
+
+    return appServices;
+});

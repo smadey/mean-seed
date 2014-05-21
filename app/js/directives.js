@@ -1,5 +1,11 @@
-'use strict';
+define(['angular'], function (angular) {
+    'use strict';
 
-/* Directives */
+    /* Directives */
 
-var appDirectives = angular.module('appDirectives', []);
+    var appDirectives = angular.module('appDirectives', []);
+
+    return appDirectives;
+});
+
+

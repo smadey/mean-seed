@@ -1,24 +1,36 @@
-'use strict';
-
-/* App Module */
-
-var app = angular.module('App', [
+define([
+    'angular',
     'ionic',
-    'ionic.ui.superSlideBox',
-    'appDirectives',
-    'appControllers',
-    'appFilters',
-    'appServices'
-]);
+    'superslidebox',
+    'filters',
+    'services',
+    'directives',
+    'controllers'
+], function (angular, ionic) {
+        'use strict';
 
-app.config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
-        $stateProvider.
-        state('intro', {
-            url: '/',
-            templateUrl: 'views/index.html',
-            controller: 'InvitationCtrl'
-        });
-        $urlRouterProvider.otherwise('/');
-    }
-]);
+        /* App Module */
+
+        var app = angular.module('App', [
+            'ionic',
+            'ionic.ui.superSlideBox',
+            'ui.router.compat',
+            'appFilters',
+            'appServices',
+            'appDirectives',
+            'appControllers'
+        ]);
+
+        app.config(['$stateProvider', '$urlRouterProvider',
+            function($stateProvider, $urlRouterProvider) {
+                $stateProvider.state('home', {
+                    url: '/',
+                    templateUrl: 'views/index.html',
+                    controller: 'MainCtrl'
+                });
+                $urlRouterProvider.otherwise('/');
+            }
+        ]);
+
+        return app;
+});
