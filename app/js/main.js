@@ -6,6 +6,7 @@ require.config({
         'angularResource': '../../bower_components/angular-resource/angular-resource',
         'angularSanitize': '../../bower_components/angular-sanitize/angular-sanitize',
         'angularUIRouter': '../../bower_components/angular-ui-router/release/angular-ui-router',
+        'angularBootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap',
         'ionic': '../../bower_components/ionic/release/js/ionic',
         'ionicAngular': '../../bower_components/ionic/release/js/ionic-angular',
         'text': '../../bower_components/requirejs-text/text',

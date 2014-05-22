@@ -8,6 +8,7 @@
     "angular-resource": "~1.2.x",
     "angular-loader": "1.2.x",
     "angular-mocks": "~1.2.x",
+    "angular-bootstrap": "~0.11.0",
     "ionic": "~0.9.27",
     "bootstrap-sass-official": "~3.1.1",
     "font-awesome": "~4.0.3",
