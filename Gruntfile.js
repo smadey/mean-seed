@@ -26,30 +26,25 @@ module.exports = function(grunt) {
         },
 
         sass: {
+            options: {
+                cacheLocation: 'app/css/.sass-cache'
+            },
             dev: {
                 options: {
                     style: 'expanded',
-                    lineNumbers: true,
-                    cacheLocation: 'app/css/.sass-cache'
+                    lineNumbers: true
                 },
-                expand: true,
-                noCache: true,
-                cwd: 'app/css/sass/',
-                src: ['*.scss'],
-                dest: 'app/css',
-                ext: '.css'
+                files: {
+                    'app/css/main.css': 'app/css/sass/main.scss'
+                }
             },
             dist: {
                 options: {
-                    style: 'compressed',
-                    cacheLocation: 'app/css/.sass-cache'
+                    style: 'compressed'
                 },
-                expand: true,
-                noCache: true,
-                cwd: 'app/css/sass/',
-                src: ['*.scss'],
-                dest: 'app/css',
-                ext: '.css'
+                files: {
+                    'app/css/main.css': 'app/css/sass/main.scss'
+                }
             }
         },
 
