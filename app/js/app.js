@@ -1,6 +1,7 @@
 define([
     'angular',
     'ionic',
+    'angularBootstrap',
     'superslidebox',
     'filters',
     'services',
@@ -14,6 +15,7 @@ define([
         var app = angular.module('App', [
             'ionic',
             'ionic.ui.superSlideBox',
+            'ui.bootstrap',
             'ui.router.compat',
             'appFilters',
             'appServices',
