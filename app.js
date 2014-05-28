@@ -34,6 +34,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
+app.get('/services/user', routes.needLogin);
 app.get('/services/user', user.list);
 app.get('/services/user/:id', user.get);
 app.post('/services/user', user.create);

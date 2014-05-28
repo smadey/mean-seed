@@ -5,8 +5,8 @@ define(['angular', 'services'], function (angular) {
 
     var appControllers = angular.module('appControllers', ['appServices']);
 
-    appControllers.controller('MainCtrl', ['$scope', 'Invitation',
-        function($scope, Invitation) {
+    appControllers.controller('MainCtrl', ['$scope', 'User',
+        function($scope, User) {
             $scope.introPics = ['intro1', 'intro2', 'intro3'];
         }
     ]);

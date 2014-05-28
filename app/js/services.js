@@ -5,12 +5,12 @@ define(['angular', 'angularResource'], function (angular) {
 
     var appServices = angular.module('appServices', ['ngResource']);
 
-    appServices.factory('Invitation', ['$resource',
+    appServices.factory('User', ['$resource',
         function($resource) {
-            var Invitation = $resource('/services/invitation/:id', {}, {
+            var User = $resource('/services/user/:id', {}, {
                 update: { method: 'PUT'}
             });
-            return Invitation;
+            return User;
         }
     ]);
 

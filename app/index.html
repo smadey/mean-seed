@@ -10,10 +10,34 @@
 
     <link rel="stylesheet" href="css/main.css">
     <script data-main="js/main" src="/bower_components/requirejs/require.js"></script>
+
+    <style>
+        .phone {
+            background: url('./img/phone-case.png') no-repeat center center;
+            position: relative;
+            width: 380px;
+            height: 810px;
+            margin: 100px auto;
+        }
+        .phone-inner {
+            position: absolute;
+            top: 104px;
+            left: 33px;
+            width: 328px;
+            height: 576px;
+            border: 4px solid #22272d;
+            background-color: white;
+        }
+    </style>
 </head>
 
-<body ng-app>
-    <ion-view ng-view></ion-view>
+<body>
+    <div class="phone">
+        <div class="phone-inner">
+            <ion-view ng-view></ion-view>
+        </div>
+    </div>
+
 </body>
 
 </html>

@@ -1,10 +1,16 @@
+var handler = require('../common/handler');
 
-/*
- * GET home page.
- */
+var utils = require('../common/utils')
 
 exports.index = function(req, res){
-    res.sendfile('app/index.html');
+    var type = utils.getClientDeviceType(req);
+    console.log(type);
+    if(type == 'desktop') {
+        res.sendfile('app/index.html');
+    }
+    else {
+        res.sendfile('app/index-full.html');
+    }
 };
 
 exports.needLogin = function(req, res, next) {
@@ -12,7 +18,7 @@ exports.needLogin = function(req, res, next) {
         next();
     }
     else {
-        console.log('Please login');
+        handler.notlogin(res);
     }
 }
 
@@ -21,6 +27,6 @@ exports.needLogoff = function(req, res, next) {
         next();
     }
     else {
-        console.log('You have login already');
+        handler.logged(res);
     }
 }

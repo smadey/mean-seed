@@ -1,5 +1,4 @@
 
-
 function getResponse(status, data) {
     return {
         status: status,
@@ -17,4 +16,12 @@ exports.error = function(res) {
     return function(err) {
         res.send(getResponse('error', err));
     }
+}
+
+exports.logged = function(res) {
+    res.send(getResponse('logged', 'Please logout!'));
+}
+
+exports.notlogin = function(res) {
+    res.send(getResponse('notlogin', 'Please login!'));
 }
