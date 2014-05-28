@@ -18,7 +18,7 @@ exports.needLogin = function(req, res, next) {
         next();
     }
     else {
-        handler.notlogin(res);
+        handler.warning(res)('NOT_LOGIN');
     }
 };
 
@@ -27,6 +27,6 @@ exports.needLogout = function(req, res, next) {
         next();
     }
     else {
-        handler.notlogout(res);
+        handler.warning(res)('NOT_LOGOUT');
     }
 };

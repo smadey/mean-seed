@@ -26,7 +26,7 @@ exports.create = function(req, res){
 
     db.User.count({ where: _where }).success(function(count) {
         if(count > 0) {
-            handler.userexist(res);
+            handler.warning(res)('USERNAME_ALREADY_EXIST');
         }
         else {
             db.User.create(_model).success(function(user) {
@@ -71,8 +71,13 @@ exports.login = function(req, res){
     };
 
     db.User.find({ where: _where }).success(function(user) {
-        req.session.user = user;
-        handler.success(res)(user);
+        if(user == null) {
+            handler.warning(res)('USERNAME_OR_PASSWORD_WRONG');
+        }
+        else {
+            req.session.user = user;
+            handler.success(res)(user);
+        }
     }).error(handler.error(res));
 };
 

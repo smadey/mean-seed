@@ -18,15 +18,19 @@ exports.error = function(res) {
     }
 };
 
-exports.userexist = function(res) {
-    res.send(getResponse('userexist', 'Username already exist!'));
+exports.warning = function(res) {
+    return function(code) {
+        var info = {
+            code: code,
+            msg: exports.WARNING_CODE[code]
+        };
+        res.send(getResponse('warning', info));
+    }
 };
 
-
-exports.notlogout = function(res) {
-    res.send(getResponse('notlogout', 'Please logout!'));
-};
-
-exports.notlogin = function(res) {
-    res.send(getResponse('notlogin', 'Please login!'));
+exports.WARNING_CODE = {
+    NOT_LOGOUT: 'Please logout!',
+    NOT_LOGIN: 'Please login!',
+    USERNAME_ALREADY_EXIST: 'Username already exist!',
+    USERNAME_OR_PASSWORD_WRONG: 'Username or password wrong!'
 };
