@@ -8,29 +8,64 @@ exports.list = function(req, res){
 };
 
 exports.get = function(req, res){
-    var id = req.params.id;
+    var _where = {
+        id: req.params.id
+    };
 
-    db.User.find({ where: { id: id } }).success(handler.success(res)).error(handler.error(res));
+    db.User.find({ where: _where }).success(handler.success(res)).error(handler.error(res));
 };
 
 exports.create = function(req, res){
-    var user = req.body;
+    var _model = {
+        username: req.body.username,
+        password: utils.md5(req.body.password)
+    };
 
-    db.User.create(user).success(handler.success(res)).error(handler.error(res));
+    db.User.create(_model).success(function(user) {
+        req.session.user = user;
+        handler.success(res)(user);
+    }).error(handler.error(res));
 };
 
 
 exports.update = function(req, res){
-    var id = req.params.id,
-        user = req.body;
+    var _where = {
+        id: req.params.id
+    };
+    var _model = {
+        username: req.body.username,
+        password: utils.md5(req.body.password)
+    }
 
-    db.User.find({ where: { id: id } }).success(function(item) {
-        item.updateAttributes(user).success(handler.success(res)).error(handler.error(res))
+    db.User.find({ where: _where }).success(function(item) {
+        item.updateAttributes(_model).success(handler.success(res)).error(handler.error(res))
     }).error(handler.error(res));
 };
 
 exports.delete = function(req, res){
-    var id = req.params.id;
+    var _where = {
+        id: req.params.id
+    };
 
-    db.User.delete({ where: { id: id } }).success(handler.success(res)).error(handler.error(res));
+    db.User.delete({ where: _where }).success(handler.success(res)).error(handler.error(res));
 };
+
+exports.login = function(req, res){
+    var _where = {
+        username: req.body.username,
+        password: utils.md5(req.body.password)
+    };
+
+    db.User.find({ where: _where }).success(function(user) {
+        req.session.user = user;
+        handler.success(res)(user);
+    }).error(handler.error(res));
+};
+
+exports.getByName = function(req, res) {
+    var _where = {
+        username: req.params.username
+    };
+
+    db.User.find({ where: _where }).success(handler.success(res)).error(handler.error(res));
+}

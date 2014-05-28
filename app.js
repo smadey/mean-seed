@@ -34,12 +34,20 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
-app.get('/services/user', routes.needLogin);
-app.get('/services/user', user.list);
-app.get('/services/user/:id', user.get);
-app.post('/services/user', user.create);
-app.put('/services/user', user.update);
-app.delete('/services/user/:id', user.delete);
+// app.get('/services/user', user.list);
+// app.get('/services/user/:id', user.get);
+// app.post('/services/user', user.create);
+// app.put('/services/user', user.update);
+// app.delete('/services/user/:id', user.delete);
+
+app.get('/services/usercheck/:username', routes.needLogoff);
+app.get('/services/usercheck/:username', user.getByName);
+
+app.post('/services/userregister', routes.needLogoff);
+app.post('/services/userregister', user.create);
+
+app.post('/services/userlogin', routes.needLogoff);
+app.post('/services/userlogin', user.login);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
