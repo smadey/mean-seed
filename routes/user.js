@@ -42,10 +42,14 @@ exports.update = function(req, res){
     var _where = {
         id: req.params.id
     };
-    var _model = {
-        username: req.body.username,
-        password: utils.md5(req.body.password)
-    }
+    var _model = {},
+        allowUpdateKeys = ['nickname', 'age', 'sex', 'telphone', 'email'];
+
+    allowUpdateKeys.forEach(function(key) {
+        if(req.body[key] !== undefined) {
+            _model[key] = req.body[key]
+        }
+    });
 
     db.User.find({ where: _where }).success(function(item) {
         item.updateAttributes(_model).success(handler.success(res)).error(handler.error(res))
@@ -74,7 +78,7 @@ exports.login = function(req, res){
 
 exports.logout = function(req, res){
     req.session.user = null;
-    handler.success(res)('');
+    handler.success(res)();
 };
 
 exports.checkName = function(req, res) {
