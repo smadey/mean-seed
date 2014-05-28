@@ -16,17 +16,27 @@ exports.get = function(req, res){
 };
 
 exports.create = function(req, res){
+    var _where = {
+        username: req.body.username
+    };
     var _model = {
         username: req.body.username,
         password: utils.md5(req.body.password)
     };
 
-    db.User.create(_model).success(function(user) {
-        req.session.user = user;
-        handler.success(res)(user);
+    db.User.count({ where: _where }).success(function(count) {
+        if(count > 0) {
+            handler.userexist(res);
+        }
+        else {
+            db.User.create(_model).success(function(user) {
+                req.session.user = user;
+                handler.success(res)(user);
+            }).error(handler.error(res));
+        }
     }).error(handler.error(res));
-};
 
+};
 
 exports.update = function(req, res){
     var _where = {
@@ -62,10 +72,15 @@ exports.login = function(req, res){
     }).error(handler.error(res));
 };
 
-exports.getByName = function(req, res) {
+exports.logout = function(req, res){
+    req.session.user = null;
+    handler.success(res)('');
+};
+
+exports.checkName = function(req, res) {
     var _where = {
         username: req.params.username
     };
 
-    db.User.find({ where: _where }).success(handler.success(res)).error(handler.error(res));
-}
+    db.User.count({ where: _where }).success(handler.success(res)).error(handler.error(res));
+};

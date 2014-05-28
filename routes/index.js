@@ -20,13 +20,13 @@ exports.needLogin = function(req, res, next) {
     else {
         handler.notlogin(res);
     }
-}
+};
 
-exports.needLogoff = function(req, res, next) {
+exports.needLogout = function(req, res, next) {
     if(!req.session.user) {
         next();
     }
     else {
-        handler.logged(res);
+        handler.notlogout(res);
     }
-}
+};

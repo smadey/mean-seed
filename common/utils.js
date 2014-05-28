@@ -26,7 +26,7 @@ exports.formatDate = function(date, format) {
         }
     }
     return format;
-}
+};
 
 // md5 content
 exports.md5 = function(content) {
@@ -106,4 +106,4 @@ exports.getClientDeviceType = function(request) {
         // Otherwise assume it is a phone Device
         return options.unknownUserAgentDeviceType;
     }
-}
+};
