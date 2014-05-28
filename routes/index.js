@@ -1,6 +1,5 @@
-var handler = require('../common/handler');
-
-var utils = require('../common/utils')
+var utils = require('../common/utils');
+var reshandler = require('../common/responseHandler');
 
 exports.index = function(req, res){
     var type = utils.getClientDeviceType(req);
@@ -18,7 +17,7 @@ exports.needLogin = function(req, res, next) {
         next();
     }
     else {
-        handler.warning(res)('NOT_LOGIN');
+        reshandler.warning(res)('NOT_LOGIN');
     }
 };
 
@@ -27,6 +26,6 @@ exports.needLogout = function(req, res, next) {
         next();
     }
     else {
-        handler.warning(res)('NOT_LOGOUT');
+        reshandler.warning(res)('NOT_LOGOUT');
     }
 };
