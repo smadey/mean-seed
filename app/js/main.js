@@ -6,6 +6,8 @@ require.config({
         'angularResource': '../../bower_components/angular-resource/angular-resource',
         'angularSanitize': '../../bower_components/angular-sanitize/angular-sanitize',
         'angularUIRouter': '../../bower_components/angular-ui-router/release/angular-ui-router',
+        'angularMocks': '../../bower_components/angular-ui-router/angular-mocks',
+        'angularBootstrap': '../../bower_components/angular-bootstrap/ui-bootstrap-tpls',
         'ionic': '../../bower_components/ionic/release/js/ionic',
         'ionicAngular': '../../bower_components/ionic/release/js/ionic-angular',
         'text': '../../bower_components/requirejs-text/text',
@@ -25,6 +27,7 @@ require.config({
             deps: ['angular'],
             exports:'angular.mock'
         },
+        'angularBootstrap': ['angular'],
         'ionic': {
             exports: 'ionic'
         },
