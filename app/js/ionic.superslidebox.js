@@ -65,8 +65,8 @@
                 // create an array to store current positions of each slide
                 slidePos = new Array(slides.length);
 
-                // determine width or height of each slide
-                wh = container.getBoundingClientRect()[whCssName] || container[offset + (whCssName.slice(0, 1).toUpperCase() + whCssName.slice(1))];
+                // determine width or height of each slide, 'getBoundingClientRect' get width/height error if parent transform scaled
+                wh = container['offset' + (whCssName.slice(0, 1).toUpperCase() + whCssName.slice(1))] || container.getBoundingClientRect()[whCssName];
 
                 element.style[whCssName] = (slides.length * wh) + 'px';
 
