@@ -40,17 +40,13 @@ app.get('/', routes.index);
 // app.put('/services/{model}', {model}.update);
 // app.delete('/services/{model}/:id', {model}.delete);
 
-app.get('/services/usercheck/:username', routes.needLogout);
-app.get('/services/usercheck/:username', user.checkName);
+app.get('/services/usercheck/:username', routes.needLogout, user.checkName);
 
-app.post('/services/userregister', routes.needLogout);
-app.post('/services/userregister', user.create);
+app.post('/services/userregister', routes.needLogout, user.create);
 
-app.post('/services/userlogin', routes.needLogout);
-app.post('/services/userlogin', user.login);
+app.post('/services/userlogin', routes.needLogout, user.login);
 
-app.get('/services/userlogout', routes.needLogin);
-app.get('/services/userlogout', user.logout);
+app.get('/services/userlogout', routes.needLogin, user.logout);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
