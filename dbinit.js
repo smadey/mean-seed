@@ -26,8 +26,11 @@ connection.query(sql, function(err, result) {
                 throw err[0];
             }
             else {
-                console.log('\nInitialize database successful!');
-                process.exit();
+                console.log('\nInitialize database successful!\n');
+                db.User.create({ username: 'admin', password: '21232f297a57a5a743894a0e4a801fc3' }).success(function(user) {
+                    console.log('\nCreate User "admin" successful!\n');
+                    process.exit();
+                });
             }
         });
     }
