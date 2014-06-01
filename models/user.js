@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define('User', {
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true
+        },
         username: {
             type: DataTypes.STRING(50),
             allowNull: false,
@@ -31,7 +36,8 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true,
         classMethods: {
             associate: function(models) {
-                // User.hasMany(models.Other, { foreignKey: 'userId' });
+                User.hasMany(models.OAuthAccessTokens, { foreignKey: 'id' })
+                    .hasMany(models.OAuthRefreshTokens, { foreignKey: 'id' });
             }
         }
     });
