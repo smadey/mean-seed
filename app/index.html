@@ -32,15 +32,22 @@
             top: 104px;
             width: 328px;
         }
-        @media screen and (min-height: 1000px) {
-            .phone {
-                margin-top: 100px;
-            }
-        }
-        @media screen and (min-height: 608px, max-height: 800px) {
+        @media screen and (min-height: 600px) {
             .phone {
                 -webkit-transform: scale(.8);
                 top: -75px;
+            }
+        }
+        @media screen and (min-height: 810px) {
+            .phone {
+                -webkit-transform: scale(1);
+                top: 0;
+            }
+        }
+        @media screen and (min-height: 1000px) {
+            .phone {
+                -webkit-transform: scale(1);
+                top: 100px;
             }
         }
     </style>
