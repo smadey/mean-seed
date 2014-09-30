@@ -1,19 +1,22 @@
 {
-  "name": "seed",
-  "description": "A starter project",
-  "version": "0.0.0",
-  "dependencies": {
-    "jquery": "1.10.2",
-    "angular": "1.2.x",
-    "angular-resource": "~1.2.x",
-    "angular-loader": "1.2.x",
-    "angular-mocks": "~1.2.x",
-    "angular-bootstrap": "~0.11.0",
-    "ionic": "~0.9.27",
-    "bootstrap-sass-official": "~3.1.1",
-    "font-awesome": "~4.0.3",
-    "requirejs": "~2.1.11",
-    "requirejs-text": "~2.0.12",
-    "require-css": "~0.1.2"
-  }
+    "name": "seed",
+    "version": "0.0.1",
+    "description": "Seed project",
+    "dependencies": {
+        "underscore": "*",
+        "zepto": "*",
+        "jquery": "1.*",
+        "bootstrap-sass-official": "*",
+        "bootstrap-daterangepicker": "*",
+        "angular": "*",
+        "angular-ui-router": "*",
+        "angular-ui-select": "*",
+        "angular-resource": "*",
+        "angular-translate": "*",
+        "angular-cookies": "*",
+        "angular-bootstrap": "*",
+        "requirejs": "*",
+        "require-css": "*",
+        "alertify.js": "*"
+    }
 }

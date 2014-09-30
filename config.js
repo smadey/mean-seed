@@ -1,8 +1,10 @@
 
+exports.port = 8888;
 
-exports.port = 8080;
+exports.cookieSecret = 'smadey-seed';
 
-exports.cookieSecret = 'seed';
+exports.isProduction = false;
+exports.isRelease = false;
 
 
 var dbInfo = {

@@ -36,8 +36,6 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true,
         classMethods: {
             associate: function(models) {
-                User.hasMany(models.OAuthAccessTokens, { foreignKey: 'id' })
-                    .hasMany(models.OAuthRefreshTokens, { foreignKey: 'id' });
             }
         }
     });

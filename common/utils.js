@@ -107,3 +107,69 @@ exports.getClientDeviceType = function(request) {
         return options.unknownUserAgentDeviceType;
     }
 };
+
+
+exports.isMacDesktop = function(request) {
+    var ua = request.headers['user-agent'];
+
+    if (ua && ua.match(/Macintosh|PowerPC/i) && !ua.match(/Silk/i)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+};
+
+function getRes(status, code, data) {
+    var res = {};
+
+    res.status = status || 'success';
+    code && (res.code = code);
+    data && (res.data = data);
+
+    return res;
+};
+
+exports.getRes = getRes;
+
+exports.needLogin = function(req, res, next) {
+    if(req.session.user) {
+        next();
+    }
+    else {
+        res.send(getRes('warning', 'NOT_LOGIN'));
+    }
+};
+
+exports.needLogout = function(req, res, next) {
+    if(!req.session.user) {
+        next();
+    }
+    else {
+        res.send(getRes('warning', 'NOT_LOGOUT'));
+    }
+};
+
+
+exports.toObject = function(obj) {
+    return typeof obj === 'object' ? obj : {};
+};
+
+exports.toFunction = function(func) {
+    return typeof func === 'function' ? func : function() {};
+};
+
+exports.toArray = function(obj, allowType) {
+    allowType = ['string', 'function'].indexOf(allowType) > -1 ? allowType : 'string';
+    return Array.isArray(obj) ? obj : typeof obj === allowType ? [obj] : [];
+};
+
+exports.copyByKeys = function(keys, from, to) {
+    to = to || {};
+
+    keys.forEach(function(key) {
+        to[key] = from[key];
+    });
+
+    return to;
+};

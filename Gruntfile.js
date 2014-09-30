@@ -10,24 +10,22 @@ module.exports = function(grunt) {
                 options: {
                     livereload: true
                 },
-                files: ['app/*.html', 'app/**/*.html', 'app/css/*.css', 'app/js/*.js']
+                files: ['app/**']
             },
             css: {
                 files: ['app/css/sass/*.scss'],
-                tasks: ['sass:dev']
+                tasks: ['sass:dist']
             },
             js: {
-                files: [
-                    'app/js/*.js',
-                    'Gruntfile.js'
-                ],
+                files: ['Gruntfile.js', 'app/js/*.js'],
                 tasks: ['jshint']
             }
         },
 
         sass: {
             options: {
-                cacheLocation: 'app/css/.sass-cache'
+                cacheLocation: 'app/css/.sass-cache',
+                sourcemap: 'none'
             },
             dev: {
                 options: {
@@ -53,6 +51,28 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc'
             },
             all: ['Gruntfile.js', 'app/js/*.js']
+        },
+
+        concat: {
+            options: {
+                separator: ';',
+            },
+            release: {
+                files: {
+                    'app/release/js/main.js': ['app/js/*.js']
+                }
+            }
+        },
+
+        uglify: {
+            options: {
+                mangle: false
+            },
+            release: {
+                files: {
+                    'app/release/js/main.min.js': ['app/release/js/main.js']
+                }
+            }
         }
     });
 

@@ -1,95 +1,112 @@
 var db = require('../models');
 
 var utils = require('../common/utils');
-var reshandler = require('../common/responseHandler');
+var Rest = require('../common/rest');
 
-exports.list = function(req, res){
-    db.User.findAll().success(reshandler.success(res)).error(reshandler.error(res));
-};
-
-exports.get = function(req, res){
-    var _where = {
-        id: req.params.id
-    };
-
-    db.User.find({ where: _where }).success(reshandler.success(res)).error(reshandler.error(res));
-};
-
-exports.create = function(req, res){
-    var _where = {
-        username: req.body.username
-    };
-    var _model = {
-        username: req.body.username,
-        password: utils.md5(req.body.password)
-    };
-
-    db.User.count({ where: _where }).success(function(count) {
-        if(count > 0) {
-            reshandler.warning(res)('USERNAME_ALREADY_EXIST');
+var checkPassword = function(req, res, next) {
+    if(req.body.password) {
+        if(req.body.password.length < 5) {
+            res.send(utils.getRes('warning', 'PASSWORD_LENGTH_AL_LEAST_5'));
+        }
+        else if(req.body.password2 !== req.body.password) {
+            res.send(utils.getRes('warning', 'PASSWORD_MUST_BE_SAME'));
         }
         else {
-            db.User.create(_model).success(function(user) {
-                req.session.user = user;
-                reshandler.success(res)(user);
-            }).error(reshandler.error(res));
+            next();
         }
-    }).error(reshandler.error(res));
-
+    }
+    else {
+        res.send(utils.getRes('warning', 'PASSWORD_MISSING'));
+    }
 };
 
-exports.update = function(req, res){
-    var _where = {
-        id: req.params.id
-    };
-    var _model = {},
-        allowUpdateKeys = ['nickname', 'age', 'sex', 'telphone', 'email'];
-
-    allowUpdateKeys.forEach(function(key) {
-        if(req.body[key] !== undefined) {
-            _model[key] = req.body[key];
+var user = new Rest({
+    model: db.User,
+    msgPrefix: 'USER',
+    router: router,
+    list: {
+        beforeCallbacks: [utils.needLogin]
+    },
+    get: {
+        beforeCallbacks: [utils.needLogin],
+    },
+    post: {
+        beforeCallbacks: [utils.needLogout, checkPassword],
+        requireKeys: ['username', 'password', 'password2'],
+        uniqueKeys: ['username'],
+        createKeys: ['username', 'password', 'nickname', 'age', 'sex', 'telphone', 'email'],
+        beforeCreate: function(model) {
+            model.password = utils.md5(model.password);
+        },
+        afterCreate: function(model) {
+            this.session.user = model;
         }
-    });
+    },
+    put: {
+        beforeCallbacks: [utils.needLogin],
+        requireKeys: ['id'],
+        uniqueKeys: ['telphone', 'email'],
+        updateKeys: ['nickname', 'age', 'sex', 'telphone', 'email']
+    },
+    delete: {
+        beforeCallbacks: [utils.needLogin]
+    }
+});
 
-    db.User.find({ where: _where }).success(function(item) {
-        item.updateAttributes(_model).success(reshandler.success(res)).error(reshandler.error(res))
-    }).error(reshandler.error(res));
-};
+var router = user.getRouter();
 
-exports.delete = function(req, res){
-    var _where = {
-        id: req.params.id
-    };
+router.get('/islogin', function(req, res) {
+    res.send(utils.getRes('success', '', !!req.session.user));
+});
 
-    db.User.delete({ where: _where }).success(reshandler.success(res)).error(reshandler.error(res));
-};
+router.post('/login', utils.needLogout, function(req, res) {
+    var warningInfo = user.checkRequireKeys(req.body, ['username', 'password'], user._options.msgPrefix);
+    if(warningInfo) {
+        res.send(warningInfo);
+        return;
+    }
 
-exports.login = function(req, res){
     var _where = {
         username: req.body.username,
         password: utils.md5(req.body.password)
     };
 
     db.User.find({ where: _where }).success(function(user) {
-        if(user == null) {
-            reshandler.warning(res)('USERNAME_OR_PASSWORD_WRONG');
+        if(user) {
+            req.session.user = user;
+            res.send(utils.getRes('success', 'LOGIN_SUCCESS', user));
         }
         else {
-            req.session.user = user;
-            reshandler.success(res)(user);
+            res.send(utils.getRes('warning', 'USERNAME_OR_PASSWORD_WRONG', user));
         }
-    }).error(reshandler.error(res));
-};
+    }).error(function(err) {
+        res.send(utils.getRes('error', '', err));
+    });
+});
 
-exports.logout = function(req, res){
+router.get('/logout', utils.needLogin, function(req, res) {
     req.session.user = null;
-    reshandler.success(res)();
-};
+    res.send(utils.getRes('success'));
+});
 
-exports.checkName = function(req, res) {
+router.get('/check/:username', utils.needLogout, function(req, res) {
+    var warningInfo = user.checkRequireKeys(req.params, ['username'], user._options.msgPrefix);
+    if(warningInfo) {
+        res.send(warningInfo);
+        return;
+    }
+
     var _where = {
         username: req.params.username
     };
 
-    db.User.count({ where: _where }).success(reshandler.success(res)).error(reshandler.error(res));
-};
+    db.User.count({ where: _where }).success(function(count) {
+        res.send(utils.getRes('success', '', count));
+    }).error(function(err) {
+        res.send(utils.getRes('error', '', err));
+    });
+});
+
+user.init();
+
+module.exports = router;

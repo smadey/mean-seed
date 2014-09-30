@@ -1,0 +1,31 @@
+.alertify-logs {
+    left: 50%;
+    @include transform(translate3d(-50%, 0, 0));
+}
+
+.alertify-log {
+    background: $btn-info-bg;
+    padding: 10px 14px;
+    border-radius: 4px;
+    color: $btn-info-color;
+    text-shadow: none;
+    border: 1px solid $btn-info-border;
+
+    &.alertify-log-success {
+        color: $btn-success-color;
+        background: $btn-success-bg;
+        border: 1px solid $btn-success-border;
+    }
+
+    &.alertify-log-warning {
+        color: $btn-warning-color;
+        background: $btn-warning-bg;
+        border: 1px solid $btn-warning-border;
+    }
+
+    &.alertify-log-error {
+        color: $btn-danger-color;
+        background: $btn-danger-bg;
+        border: 1px solid $btn-danger-border;
+    }
+}

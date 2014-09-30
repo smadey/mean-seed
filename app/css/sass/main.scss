@@ -1,12 +1,13 @@
+$icon-font-path: "../../lib/bootstrap-sass-official/assets/fonts/bootstrap/";
+@import "../../lib/bootstrap-sass-official/assets/stylesheets/bootstrap";
 
-// $icon-font-path: "../../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
-// @import "../../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap";
+@import "../../lib/alertify.js/themes/alertify.core.css";
+@import "../../lib/alertify.js/themes/alertify.bootstrap.css";
 
-// $fa-font-path: "../../bower_components/font-awesome/fonts";
-// @import "../../bower_components/font-awesome/scss/font-awesome";
+// @import "../../lib/bootstrap-daterangepicker/daterangepicker-bs3.css";
+// @import "../../lib/angular-ui-select/dist/select.css";
 
-$ionicons-font-path: "../../bower_components/ionic/release/fonts";
-@import "../../bower_components/ionic/scss/ionic";
-
+@import "mixin";
+@import "common";
+@import "alertify";
 @import "app";
-

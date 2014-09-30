@@ -1,4 +1,4 @@
 smadey-seed
 ===========
 
-The seed
+The seed project
